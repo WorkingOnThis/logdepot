@@ -1,0 +1,151 @@
+<div class="row animated fadeIn">
+
+    <div class="col-lg-3" *ngIf="armar.length <= 0">
+        <div class="card">
+            <div class="card-body shadowgral" align="center">
+                <h4 class="box-title mb-0 titlesections p-3 pl-5" align="left">Nuevo estante</h4>
+                <form [formGroup]="estante" class="form-horizontal mt-3">
+
+                    <div class="form-group row text-center mr-3 ml-3 mt-2">
+
+                        <mat-form-field class="col-12 mt-4">
+                            <mat-select formControlName="deposito" placeholder="Deposito" class="text-center">
+                                <mat-option value="Napolitanos">Napolitanos</mat-option>
+                                <mat-option value="Napolitanos 2">Napolitanos 2</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="col-12 mt-4">
+                            <input formControlName="nombre" matInput placeholder="Nombre" class="text-center" type="text">
+                        </mat-form-field>
+
+                        <mat-form-field class="col-12 mt-4">
+                            <input formControlName="posicion" matInput placeholder="Posicion" class="text-center" type="number">
+                        </mat-form-field>
+
+                        <mat-form-field class="col-12 mt-4">
+                            <input formControlName="filas" matInput placeholder="Filas" class="text-center" type="number">
+                        </mat-form-field>
+
+                        <mat-form-field class="col-12 mt-4">
+                            <input formControlName="columnas" matInput placeholder="Columnas" class="text-center" type="number">
+                        </mat-form-field>
+                        <!-- <mat-form-field appearance="outline" class="col-12 col-lg-2 mt-4">
+                            <mat-label class="text-center">Columnas</mat-label>
+                            <input matInput class="text-center" type="number">
+                        </mat-form-field> -->
+
+                    </div>
+
+                    <div class="row mr-3 ml-3 text-center">
+                        <div class="col-12 text-center">
+                            <button class="btn btn-info botonaguardar text-center" type="button" (click)="guardarEstante()">Generar estante</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3" *ngIf="armar.length > 0">
+        <div class="card">
+            <div class="card-body shadowgral" align="center">
+                <h4 class="box-title mb-0 titlesections p-3 pl-5" align="left">Seleccionado</h4>
+                <form [formGroup]="estante" class="form-horizontal mt-3">
+                    <div *ngIf="cajita && cajaSelec != []">
+                        <div class="row text-center mr-3 ml-3 mt-2">
+
+                            <div class="espacio borde" [title]="cajaSelec[0].nombre" [style.background]="cajaSelec[0].color" style="float: none; margin: 0 auto; text-align: center;">
+                                <span class="circulo">{{cajaSelec[0].ubicacion | nombreLugar:'-':2 }}</span>
+                            </div>
+
+                            <mat-form-field class="col-12 mt-4">
+                                <input matInput placeholder="Empresa" class="text-center" type="text" [value]="cajaSelec[0].empresa">
+                            </mat-form-field>
+
+                            <mat-form-field class="col-12 mt-4">
+                                <input matInput placeholder="Codigo" class="text-center" type="text" [value]="cajaSelec[0].codigo">
+                            </mat-form-field>
+
+                            <mat-form-field class="col-12 mt-4">
+                                <input matInput placeholder="Estado" class="text-center" type="text" [value]="cajaSelec[0].estado">
+                            </mat-form-field>
+
+                            <mat-form-field class="col-12 mt-4">
+                                <input matInput placeholder="Tipo de caja" class="text-center" type="text" [value]="cajaSelec[0].tipo_de_caja">
+                            </mat-form-field>
+
+                            <mat-form-field class="col-12 mt-4">
+                                <input matInput placeholder="Fecha de alta" class="text-center" type="text" [value]="cajaSelec[0].fecha_alta | date">
+                            </mat-form-field>
+
+                            <mat-form-field class="col-12 mt-4">
+                                <input matInput placeholder="Usuario" class="text-center" type="text" [value]="cajaSelec[0].id_usuario_alta ">
+                            </mat-form-field>
+                            <br>
+                            <!-- <mat-form-field appearance="outline" class="col-12 col-lg-2 mt-4">
+                                <mat-label class="text-center">Columnas</mat-label>
+                                <input matInput class="text-center" type="number">
+                            </mat-form-field> -->
+
+                        </div>
+
+                        <div class="row mr-3 ml-3 text-center">
+                            <div class="col-12 text-center">
+                                <br>
+                                <button class="btn btn-danger text-center" type="button" (click)="liberarLugar( cajaSelec[0]._id )">Liberar espacio</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="!cajita">
+                        <br>
+                        <span>Sin contenido para mostrar</span>
+                        <br><br>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-9 center-block">
+        <div class="card">
+            <div class="card-body shadowgral" align="center">
+                <h4 class="box-title mb-0 titlesections p-3 pl-5" align="left">Deposito</h4>
+
+                <mat-form-field class="col-lg-4 mt-4">
+                    <mat-select (selectionChange)="cambioDeposito( $event.value );" [(ngModel)]="depositoSeleccionado" placeholder="Deposito" class="text-center">
+                        <mat-option value="Napolitanos">Napolitanos</mat-option>
+                        <mat-option value="Napolitanos 2">Napolitanos 2</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="col-lg-4 mt-4">
+                    <mat-select (selectionChange)="cambioEstante( $event.value )" [(ngModel)]="estanteSeleccionado" placeholder="Nombre" class="text-center">
+                        <mat-option *ngFor="let estante of estantes" [value]="estante.nombre">{{ estante.nombre }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="col-lg-4 mt-4">
+                    <mat-select (selectionChange)="cambioPosicion( $event.value )" [(ngModel)]="posicionSeleccionado" placeholder="Posicion" class="text-center">
+                        <mat-option *ngFor="let pos of posiciones" [value]="pos.posicion">{{ pos.posicion }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </div>
+        </div>
+        <div class="card" *ngIf="armar.length > 0">
+
+            <div class="card-body shadowgral" align="center" style="overflow-x:auto;">
+
+                <div *ngFor="let item of armar.slice().reverse()" class="row" style="margin-bottom: 10px; margin-top: 10px;">
+                    <div *ngFor="let punto of item" class="espacio borde" [title]="punto.nombre" [style.background]="punto.color" style="float: none; margin: 0 auto; text-align: center;" (click)="cargarCaja( punto._id );">
+                        <span class="circulo">{{punto.nombre | nombreLugar:'-':2 }}</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

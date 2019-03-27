@@ -1,0 +1,54 @@
+<div class="row animated fadeIn">
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body shadowgral" align="center">
+                <h4 class="box-title mb-0 titlesections p-3 pl-5" align="left">Tipos de caja existentes</h4>
+
+                <div class="form-group row mr-3 ml-3 mt-2 justify-content-center">
+
+                    <mat-form-field class="col-10 mt-4">
+                        <mat-select placeholder="Nombre" class="text-center">
+                            <mat-option value="primary">Primary</mat-option>
+                            <mat-option value="accent">Accent</mat-option>
+                            <mat-option value="warn">Warn</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                </div>
+
+                <div class="row mr-3 ml-3 text-center">
+                    <div class="col-12 text-center">
+                        <button class="btn btn-info botonaguardar pull-left" type="button" (click)="generateUUID()">Guardar</button>
+                        <button class="btn btn-info botonaeliminar pull-right" type="submit">Anular</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body shadowgral" align="center">
+                <h4 class="box-title mb-0 titlesections p-3 pl-5" align="left">Definir nuevo tipo de caja</h4>
+                <form [formGroup]="tipocaja" class="form-horizontal">
+                    <div class="form-group row mr-3 ml-3 mt-2 justify-content-center">
+
+                        <mat-form-field class="col-10 mt-4">
+                            <input matInput formControlName="nombre" placeholder="Nombre" type="text">
+                        </mat-form-field>
+
+                    </div>
+                </form>
+
+                <div class="row mr-3 ml-3 text-center">
+                    <div class="col-12 text-center">
+                        <button class="btn btn-info botonaguardar text-center" (click)="crearEstado()" type="submit">Generar tipo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,71 @@
+<div class="row animated fadeIn" *ngIf="cargando">
+    <div class="col-sm-12">
+        <div class="alert-warning text-center">
+            <strong>Cargando</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <span>Espere por favor</span>
+        </div>
+    </div>
+</div>
+<div class="row animated fadeIn" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body shadowgral">
+                <!-- <div class="row">
+                    <div class="col-6">
+
+                    </div>
+                    <div class="col-6 text-right">
+                        <button class="btn btn-danger" [routerLink]="['../agregar-usuario']"><i class="fas fa-plus"></i> Agregar documento</button>
+                    </div>
+                </div>
+                <hr> -->
+                <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                    <thead>
+                        <tr>
+                            <!-- <th>Imagen</th> -->
+                            <th>Codigo</th>
+                            <th>Caja</th>
+                            <th>Estado</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                            <!-- <th></th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let documento of documentos">
+                            <!-- <td class="w70">
+                              <img (click)="mostrarModal( caja._id )" [src]="usuario.img | imagen" class="img-50 img-circle pointer">
+                          </td> -->
+                            <td>
+                                <label class="mt-3">{{ documento.id_codigo }} </label>
+                            </td>
+                            <td>
+                                <label class="mt-3">{{ documento.id_caja }}</label>
+                            </td>
+                            <td>
+                                <label class="mt-3">{{ documento.estado }}</label>
+                            </td>
+                            <td>
+                                <label class="mt-3">{{ documento.fecha_alta | date }}</label>
+                            </td>
+                            <td>
+                                <!-- <button class="btn btn-primary m-1" [routerLink]="['/usuarios/actualizar-usuario', usuario._id ]"> -->
+                                <button class="btn btn-primary m-1" [swal]="['Oops!', 'This is not implemented yet :/', 'warning']" title="Modificar caja">
+                                    <i class="far fa-edit"></i>
+                                </button>
+                                <!-- <button (click)="borrarUsuario( usuario )" class="btn btn-danger m-1"> -->
+                                <button class="btn btn-danger m-1" title="Anular caja">
+                                    <i class="fas fa-dolly"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

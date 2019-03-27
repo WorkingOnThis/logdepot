@@ -1,0 +1,72 @@
+<div class="row animated fadeIn">
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body shadowgral" align="center">
+                <h4 class="box-title mb-0 titlesections p-3 pl-5" align="left">Estados existentes</h4>
+
+                <div class="form-group row text-center mr-3 ml-3 mt-2">
+
+                    <mat-form-field class="col-4 mt-4">
+                        <mat-select placeholder="Tipo" class="text-center">
+                            <mat-option value="caja">Caja</mat-option>
+                            <mat-option value="deposito">Deposito</mat-option>
+                            <mat-option value="documento">Documento</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-5 mt-4">
+                        <mat-select placeholder="Nombre" class="text-center">
+                            <mat-option value="primary">Primary</mat-option>
+                            <mat-option value="accent">Accent</mat-option>
+                            <mat-option value="warn">Warn</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <input class="form-control col-2 ml-2 mt-4 mb-3" type="text" [cpPosition]="'top'" [(colorPicker)]="colorExistente" [style.background]="colorExistente" />
+                </div>
+
+                <div class="row mr-3 ml-3 text-center">
+                    <div class="col-12 text-center">
+                        <button class="btn btn-info botonaguardar pull-left" type="submit">Guardar</button>
+                        <button class="btn btn-info botonaeliminar pull-right" type="submit">Anular</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body shadowgral" align="center">
+                <h4 class="box-title mb-0 titlesections p-3 pl-5" align="left">Definir nuevo estado</h4>
+                <form [formGroup]="estado" class="form-horizontal">
+                    <div class="form-group row text-center mr-3 ml-3 mt-2">
+
+                        <mat-form-field class="col-4 mt-4">
+                            <mat-select formControlName="tipo" placeholder="Tipo" class="text-center">
+                                <mat-option value="caja">Caja</mat-option>
+                                <mat-option value="Deposito">Deposito</mat-option>
+                                <mat-option value="documento">Documento</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="col-5 mt-4">
+                            <input matInput formControlName="nombre" placeholder="Nombre" type="text">
+                        </mat-form-field>
+
+                        <input formControlName="color" class="form-control col-2 mt-4 mb-3" type="text" [cpPosition]="'left'" [(colorPicker)]="color" [style.background]="color" />
+                    </div>
+                </form>
+
+                <div class="row mr-3 ml-3 text-center">
+                    <div class="col-12 text-center">
+                        <button class="btn btn-info botonaguardar text-center" (click)="crearEstado()" type="submit">Generar estado</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

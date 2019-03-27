@@ -1,1 +1,193 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.shadowlow {
+    -webkit-box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.1);
+    -moz-box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.1);
+    box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.4);
+}
+
+.alerta {
+    font-size: 15px;
+}
+
+.circulo {
+    padding: 4px;
+    text-align: center;
+    margin: 6px;
+    float: right;
+    height: 30px;
+    width: 30px;
+    background-color: #bbb;
+    border-radius: 50%;
+}
+
+.borde {
+    color: white;
+    text-shadow: 0 0 3px rgb(0, 0, 0);
+}
+
+.shadowgral {
+    border-radius: 7px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+}
+
+.espacio {
+    background-color: gray;
+    border-radius: 7px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+    width: 100px;
+    height: 70px;
+    margin: 10px;
+}
+
+.titlesections {
+    border-radius: 4px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+    background: #1e88e5;
+    color: white;
+}
+
+.botonactualizar {
+    font-family: "Montserrat", sans-serif ! important;
+    font-style: normal;
+    background: #1e88e5;
+    font-size: 17px ! important;
+}
+
+.botonaguardar {
+    font-family: "Montserrat", sans-serif ! important;
+    font-style: normal;
+    background: #1e88e5;
+    padding: 12px;
+    font-size: 15px ! important;
+}
+
+.botonagregar {
+    font-family: "Montserrat", sans-serif ! important;
+    font-style: normal;
+    background: #ee423c;
+    padding: 12px;
+    font-size: 15px ! important;
+}
+
+.botonaeliminar {
+    font-family: "Montserrat", sans-serif ! important;
+    font-style: normal;
+    background: #1e88e5;
+    padding: 12px;
+    font-size: 15px ! important;
+}
+
+.formulario {
+    border-radius: 4px;
+    -moz-box-shadow: inset 0 0 2px #000000;
+    -webkit-box-shadow: inset 0 0 2px #000000;
+    box-shadow: inset 0 0 2px #000000;
+}
+
+.oculto {
+    display: none;
+}
+
+#themecolors a {
+    cursor: pointer;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.w150 {
+    width: 150px;
+}
+
+.w220 {
+    width: 220px;
+}
+
+.w70 {
+    width: 70px;
+}
+
+.img-50 {
+    width: 50px;
+}
+
+.fondo-negro {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+.boton-aceptar-modal {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+/* Prueba de alerta */
+
+.alert.m-alert--outline.alert-danger.m-alert--icon-solid .m-alert__icon {
+    position: relative;
+    background: #f4516c;
+}
+
+.alert.m-alert--icon.m-alert--outline.m-alert--icon-solid .m-alert__icon {
+    position: relative;
+    padding: 1.45rem 1.75rem;
+}
+
+.alert.m-alert--icon .m-alert__icon {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 1.45rem 0.5rem 1.45rem 1.75rem;
+    line-height: 0;
+    width: 1%;
+}
+
+.alert.m-alert--icon.m-alert--outline.m-alert--icon-solid .m-alert__text {
+    padding-left: 1.75rem;
+}
+
+.alert.m-alert--icon .m-alert__text {
+    display: table-cell;
+    vertical-align: middle;
+    width: auto;
+    padding: 10px 10px;
+}
+
+.alert.m-alert--icon .m-alert__close {
+    display: table-cell;
+    vertical-align: top;
+    padding: 5px 10px;
+}
+
+.alert.m-alert--icon {
+    display: table;
+    padding: 0px;
+}
+
+.alert.m-alert--outline.alert-danger {
+    color: #575962;
+    background-color: #ffffff;
+    border-color: #f4516c;
+    color: #f4516c;
+}
+
+.iconoalert {
+    font-size: 22px;
+    color: white;
+}
+
+.iconocerrar {
+    font-size: 20px;
+}
+
+
+/* Prueba de alerta -- FIN */

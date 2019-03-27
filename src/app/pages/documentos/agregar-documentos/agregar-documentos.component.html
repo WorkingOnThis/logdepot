@@ -1,0 +1,109 @@
+<div class="row animated fadeIn">
+
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-body shadowgral" align="center">
+                <form [formGroup]="forma">
+                    <h4 class="box-title mb-0 titlesections p-3 pl-5" align="left">Información de registro</h4>
+
+                    <div class="form-group row mr-3 ml-3 mt-2 justify-content-center">
+
+                        <mat-form-field class="col-11 mt-4">
+                            <input formControlName="id_codigo" matInput name="id_codigo" placeholder="Código" type="text" autocomplete="off">
+                        </mat-form-field>
+                        <!-- formControlName="id_codigo" -->
+
+                        <div class="col-9 text-center" *ngIf="forma.controls.id_codigo.errors && forma.controls.id_codigo.touched">
+                            <div *ngIf="forma.controls.id_codigo.errors.required" class="alerta text-danger">
+                                Este campo es obligatorio.
+                            </div>
+                            <div *ngIf="forma.controls.id_codigo.errors.existe" class="text-danger">
+                                Este código ya ha sido tomado.
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row mr-3 ml-3 mt-2 justify-content-center">
+
+                        <mat-form-field class="col-11">
+                            <mat-select formControlName="id_solicitante" placeholder="Solicitante" class="text-center">
+                                <mat-option *ngFor="let solicitante of solicitantes" [value]="solicitante._id">{{ solicitante.nombre }} {{ solicitante.apellido }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <div class="col-9 text-center" *ngIf="forma.controls.id_solicitante.errors && forma.controls.id_solicitante.touched">
+                            <div *ngIf="forma.controls.id_solicitante.errors.required" class="alerta text-danger">
+                                Este campo es obligatorio.
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <div class="row mr-3 ml-3 justify-content-center">
+                        <div class="col-12 justify-content-center">
+                            <button class="btn btn-info botonaguardar" type="button" (click)="submitForm()">Registrar documento</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body shadowgral" align="center">
+                <h4 class="box-title mb-0 titlesections p-3 pl-5" align="left">Detalle del documento</h4>
+                <form [formGroup]="contenido">
+
+                    <div class="form-group row text-center mr-3 ml-3 mt-2">
+
+                        <mat-form-field class="col-6 mt-4">
+                            <mat-select formControlName="id_area" name="id_area" (selectionChange)="cargarTipos( $event.value )" placeholder="Area" class="text-center">
+                                <mat-option *ngFor="let area of areasola" [value]="area._id">{{ area.nombre }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="col-6 mt-4">
+                            <mat-select formControlName="id_tipo" name="id_tipo" placeholder="Tipo" class="text-center">
+                                <mat-option *ngFor="let tipo of tipoSoloSelected" [value]="tipo._id">{{ tipo.nombre }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="form-group row text-center mr-3 ml-3 mt-2">
+
+                        <mat-form-field class="col-4">
+                            <input matInput formControlName="desde_n" placeholder="Nùmero" type="text">
+                        </mat-form-field>
+
+                        <mat-form-field class="col-4">
+                            <input matInput formControlName="desde_fecha" placeholder="Fecha" type="text">
+                        </mat-form-field>
+
+                        <mat-form-field class="col-4">
+                            <input matInput formControlName="desde_letra" placeholder="Letra" type="text">
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="form-group row text-center mr-3 ml-3 mt-2">
+
+                        <mat-form-field class="col-12">
+                            <input matInput formControlName="observacion" placeholder="Detalle" type="text">
+                        </mat-form-field>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

@@ -1,0 +1,70 @@
+<div class="row animated fadeIn" *ngIf="cargando">
+    <div class="col-sm-12">
+        <div class="alert-warning text-center">
+            <strong>Cargando</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <span>Espere por favor</span>
+        </div>
+    </div>
+</div>
+<div class="row animated fadeIn" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body shadowgral">
+                <div class="row">
+                    <div class="col-6">
+                        <!-- <h4 class="card-title m-2">Registros: <small>{{ totalRegistros }}</small> </h4> -->
+                    </div>
+                    <div class="col-6 text-right">
+                        <button class="btn btn-danger" [routerLink]="['../agregar-usuario']"><i class="fas fa-user-plus"></i> Crear usuario </button>
+                    </div>
+                </div>
+                <hr>
+                <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Empresa</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let usuario of usuarios">
+                            <td class="w70">
+                                <img (click)="mostrarModal( usuario._id )" [src]="usuario.img | imagen" class="img-50 img-circle pointer">
+                            </td>
+                            <td>
+                                <label class="mt-3">{{ usuario.nombre }} {{ usuario.apellido }}</label>
+                            </td>
+                            <td>
+                                <label class="mt-3">{{ usuario.empresa }}</label>
+                            </td>
+                            <td>
+                                <label *ngIf="usuario.role === 'ROLE_ADMIN'" class="label label-danger mt-3">Administrador</label>
+                                <label *ngIf="usuario.role === 'ROLE_USER'" class="label label-info mt-3">Usuario</label>
+                            </td>
+                            <td>
+                                <button class="btn btn-primary m-1" title="Modificar usuario" [routerLink]="['/usuarios/actualizar-usuario', usuario._id ]">
+                                    <i class="fas fa-user-check"></i>
+                                </button>
+
+                                <!-- (click)="anularUsuario( usuario._id )" -->
+                                <swal #deleted title="¿Seguro querés anular este usuario?" (confirm)="anularUsuario( usuario )">
+                                </swal>
+
+                                <button [swal]="deleted" class="btn btn-danger m-1">
+                                    <i class="fas fa-user-alt-slash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

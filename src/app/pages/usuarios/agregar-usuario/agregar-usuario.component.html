@@ -1,0 +1,94 @@
+<div class="card">
+    <div class="card-body shadowgral">
+        <form [formGroup]="forma" (ngSubmit)="registrarUsuario()" class="form-horizontal form-material">
+            <div class="row">
+                <div class="col-xl-6">
+                    <h3 class="box-title m-b-15 titlesections p-3 pl-5" align="left">Datos de registro</h3>
+
+                    <div class="formulario pt-5 pb-5 mb-4">
+                        <div class="ml-4 mr-5 ">
+                            <div class="form-group row text-center">
+
+                                <label class="col-5 col-md-4 form-label"><strong>Nombre: </strong></label>
+                                <input formControlName="nombre" name="nombre" class="form-control col-7 col-md-8" type="text">
+
+                            </div>
+                            <div class="form-group row text-center">
+
+                                <label class="col-5 col-md-4 form-label"><strong>Apellido: </strong></label>
+                                <input formControlName="apellido" name="apellido" class="form-control col-7 col-md-8" type="text">
+
+                            </div>
+                            <div class="form-group row text-center">
+
+                                <label class="col-5 col-md-4 form-label"><strong>Correo: </strong></label>
+                                <input formControlName="correo" name="correo" class="form-control col-7 col-md-8" type="email">
+
+                            </div>
+                            <div class="form-group row text-center">
+                                <label class="col-5 col-md-4 form-label"><strong>Empresa: </strong></label>
+                                <select formControlName="empresa" name="empresa" class="col-7 col-md-8 form-control">
+                                        <!-- <option default value="">Seleccione una empresa</option> -->
+                                        <option *ngFor="let empresa of empresas" [value]="empresa._id">{{ empresa.nombre }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group row text-center">
+
+                                <label class="col-5 col-md-4 form-label"><strong>Contraseña: </strong></label>
+                                <input formControlName="password" name="password" class="form-control col-7 col-md-8" type="password">
+
+                            </div>
+                            <div class="form-group row text-center">
+
+                                <label class="col-5 col-md-4 form-label"><strong>Confirmar contraseña: </strong></label>
+                                <input formControlName="password2" name="password2" class="form-control col-7 col-md-8" type="password">
+
+                            </div>
+                            <div class="form-group row text-center" *ngIf="forma.errors?.sonIguales && !forma.pristine">
+                                <label class="col-5 col-md-4 form-label"></label>
+                                <p class="col-7 col-md-8 text-danger">
+                                    Las contraseñas deben de ser iguales.
+                                </p>
+                            </div>
+
+                            <div class="form-group row text-center">
+                                <label class="col-5 col-md-4 form-label"><strong>Tipo de usuario: </strong></label>
+                                <select formControlName="role" name="role" class="col-7 col-md-8 form-control">
+                                    <option value="ROLE_USER">Usuario</option>
+                                    <option value="ROLE_ADMIN">Administrador</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <h3 class="box-title m-b-15 titlesections p-3 pl-5" align="left">Información adicional</h3>
+                    <div class="formulario pt-5 pb-5 mb-4">
+                        <div class="ml-4 mr-5">
+                            <div class="form-group row text-center">
+                                <label class="col-5 col-md-4 form-label"><strong>Cargo: </strong></label>
+                                <input name="cargo" class="form-control col-7 col-md-8" type="text">
+
+                            </div>
+                            <div class="form-group row text-center">
+                                <label class="col-5 col-md-4 form-label"><strong>Teléfono: </strong></label>
+                                <input name="telefono" class="form-control col-7 col-md-8" type="number">
+
+                            </div>
+                            <div class="form-group row text-center">
+                                <label class="col-5 col-md-4 form-label"><strong>DNI: </strong></label>
+                                <input name="dni" class="form-control col-7 col-md-8" type="number">
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-xs-12 text-center">
+                        <button class="btn btn-info btn-lg botonactualizar" type="submit"><i class="fas fa-save font-18"></i> Agregar usuario</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
